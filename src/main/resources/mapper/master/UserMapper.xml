@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.springboot.mutil.dao.master.UserDao">
+    <resultMap id="BaseResultMap" type="org.springboot.mutil.entiry.User">
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="password" property="password" />
+    </resultMap>
+
+    <parameterMap id="User" type="org.springboot.mutil.entiry.User"/>
+
+    <sql id="Base_Column_List">
+        a.id, a.name, a.password
+    </sql>
+
+    <select id="findByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from user a
+        where a.name like concat('%',#{name},'%')
+    </select>
+
+</mapper>
