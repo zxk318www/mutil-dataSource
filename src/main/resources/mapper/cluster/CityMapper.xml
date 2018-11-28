@@ -9,14 +9,14 @@
     <parameterMap id="City" type="org.springboot.mutil.entiry.City"/>
 
     <sql id="Base_Column_List">
-        id, neme
+        a.id, a.name
     </sql>
 
     <select id="findByName" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List" />
-        from city
-        where neme = #{neme}
+        from city a
+        where a.name = #{name}
     </select>
 
 </mapper>

@@ -25,6 +25,9 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public User findUser(String name) {
         User user = userDao.findByName(name);
+        if (user==null){
+            user = new User();
+        }
         City city = cityDao.findByName("sz");
         user.setCity(city);
         System.out.println(user);
